@@ -1,16 +1,25 @@
 import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { ModeToggle } from "@/components/mode-toggle"
-import InstructionsComponent from "@/components/InstructionsComponent"
+import { DashboardLayout } from "@/components/layouts/dashboard-layout"
+import { ActivityFeed } from "@/components/dashboard/activity-feed"
+import { MarketOverview } from "@/components/dashboard/market-overview"
+import { QuickActions } from "@/components/dashboard/quick-actions"
+import { AIAssistant } from "@/components/dashboard/ai-assistant"
+import { WalletConnect } from "@/components/dashboard/wallet-connect"
 
 export default function Home() {
   return (
-    <main className="flex h-screen items-center justify-center">
-      <InstructionsComponent />
-    </main>
+    <DashboardLayout>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-6">
+          <MarketOverview />
+          <QuickActions />
+          <ActivityFeed />
+        </div>
+        <div className="space-y-6">
+          <WalletConnect />
+          <AIAssistant />
+        </div>
+      </div>
+    </DashboardLayout>
   )
 }

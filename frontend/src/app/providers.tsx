@@ -69,15 +69,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
-                {mounted ? (
-                    <RainbowKitProvider appInfo={demoAppInfo}>
-                        {children}
-                    </RainbowKitProvider>
-                ) : (
-                    <div style={{ visibility: "hidden" }}>
-                        {children}
-                    </div>
-                )}
+
+                <RainbowKitProvider appInfo={demoAppInfo}>
+                    {children}
+                </RainbowKitProvider>
+
             </QueryClientProvider>
         </WagmiProvider>
     );
