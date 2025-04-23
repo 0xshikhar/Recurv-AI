@@ -22,12 +22,9 @@ import {
 import 'dotenv/config'
 
 import {
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
+    swellchainTestnet,
+    swellchain
 } from 'wagmi/chains';
-import { agentChain } from '@/lib/customChain';
 
 // const projectId = process.env.WALLET_CONNECT_PROJECT_ID || '';
 const projectId = '9811958bd307518b364ff7178034c435';
@@ -36,7 +33,7 @@ const projectId = '9811958bd307518b364ff7178034c435';
 const config = getDefaultConfig({
     appName: 'My RainbowKit App',
     projectId: projectId,
-    chains: [mainnet, polygon, optimism, arbitrum, agentChain],
+    chains: [swellchainTestnet, swellchain],
     ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
