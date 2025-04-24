@@ -469,11 +469,21 @@ contract Swapper is Ownable, ReentrancyGuard {
         tokenCount++;
     }
 
-    // Helper function to calculate the price of a new token (only owner)
+    // Helper function to get price from the price feed
     function getHardcodedPrice(
-        AggregatorV3Interface _pricefeed
-    ) internal pure returns (uint256) {
-        return uint256(0);
+        AggregatorV3Interface _priceFeed
+    ) internal view returns (uint256) {
+        (, int256 price, , , ) = _priceFeed.latestRoundData();
+        require(price > 0, "Invalid price feed data");
+        
+        // Convert to 18 decimals (your contract uses 18 decimals for prices)
+        uint8 decimals = _priceFeed.decimals();
+        if (decimals < 18) {
+            return uint256(price) * 10**(18 - decimals);
+        } else if (decimals > 18) {
+            return uint256(price) / 10**(decimals - 18);
+        }
+        return uint256(price);
     }
 
     receive() external payable {}
