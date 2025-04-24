@@ -45,8 +45,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                                 href="/"
                                 className="flex items-center space-x-2"
                             >
-                                <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                                    ReCurv
+                                <span className="font-bold text-xl text-white bg-clip-text">
+                                    Welcome to ReCurv 🎉
                                 </span>
                             </Link>
                         </div>

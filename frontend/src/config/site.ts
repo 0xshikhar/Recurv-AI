@@ -3,11 +3,11 @@ import { SiteConfig } from "@/types"
 import { env } from "@/env.mjs"
 
 export const siteConfig: SiteConfig = {
-  name: "Next Web3 Template",
+  name: "ReCurv",
   author: "0xShikhar",
   description:
-    "Next.js 14+ starter template with app router, shadcn/ui, typesafe env, icons and configs setup.",
-  keywords: ["Next.js", "React", "Tailwind CSS", "RainbowKit", "wagmi", "Radix UI", "shadcn/ui"],
+    "ReCurv is a re-imagined DeFi platform for Swell Network.",
+  keywords: ["ReCurv", "Swell Network", "DeFi", "Liquid Staking"],
   url: {
     base: env.NEXT_PUBLIC_APP_URL,
     author: "https://shikhar.xyz",

@@ -1,63 +1,49 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Send } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
-type Message = {
-  id: number
-  content: string
-  sender: "user" | "ai"
-  timestamp: Date
-}
+import { useAiChat } from "@/hooks/use-ai-chat"
+import { SuggestedQuestions } from "@/components/dashboard/suggested-questions"
+import { FaUserCircle } from "react-icons/fa";
+import { formatAIResponse } from "@/lib/format-ai-response"
 
 export function AIAssistant() {
   const [input, setInput] = useState("")
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      content: "Hello! I'm your ReCurv AI assistant. How can I help you with your DeFi activities today?",
-      sender: "ai",
-      timestamp: new Date(),
-    },
-  ])
-
+  const { messages, isLoading, sendMessage } = useAiChat()
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  
   const handleSendMessage = () => {
     if (!input.trim()) return
-
-    // Add user message
-    const userMessage: Message = {
-      id: messages.length + 1,
-      content: input,
-      sender: "user",
-      timestamp: new Date(),
-    }
-    
-    setMessages((prev) => [...prev, userMessage])
+    sendMessage(input)
     setInput("")
-    
-    // Simulate AI response
-    setTimeout(() => {
-      const aiMessage: Message = {
-        id: messages.length + 2,
-        content: "I understand you're interested in DeFi strategies. Would you like me to explain how our lending protocol works or help you set up a trading strategy?",
-        sender: "ai",
-        timestamp: new Date(),
-      }
-      setMessages((prev) => [...prev, aiMessage])
-    }, 1000)
   }
+  
+  const handleQuestionSelect = (question: string) => {
+    setInput(question)
+    sendMessage(question)
+    setInput("")
+  }
+  
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
 
   return (
     <Card className="h-[500px] flex flex-col">
-      <CardHeader>
+      <CardHeader className="pb-2">
         <CardTitle>AI Assistant</CardTitle>
-        <CardDescription>Get help with your DeFi activities</CardDescription>
+        <CardDescription>Get help with your DeFi activities on Swell Network</CardDescription>
+        
+        {messages.length === 1 && (
+          <SuggestedQuestions onSelect={handleQuestionSelect} disabled={isLoading} />
+        )}
       </CardHeader>
-      <CardContent className="flex-1 overflow-auto space-y-4">
+      <CardContent className="flex-1 overflow-auto space-y-4 pb-2">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -67,7 +53,7 @@ export function AIAssistant() {
           >
             {message.sender === "ai" && (
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/ai-assistant.png" alt="AI" />
+                <AvatarImage src="/aiagent.png" alt="AI" />
                 <AvatarFallback>AI</AvatarFallback>
               </Avatar>
             )}
@@ -78,16 +64,40 @@ export function AIAssistant() {
                   : "bg-muted"
               }`}
             >
-              <p className="text-sm">{message.content}</p>
+              {message.sender === "user" ? (
+                <p className="text-sm">{message.content}</p>
+              ) : (
+                <div className="text-sm prose prose-sm dark:prose-invert">
+                  {formatAIResponse(message.content)}
+                </div>
+              )}
             </div>
             {message.sender === "user" && (
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/user-avatar.png" alt="User" />
-                <AvatarFallback>U</AvatarFallback>
+                <FaUserCircle className="h-8 w-8 text-white" />
+                {/* <AvatarFallback>U</AvatarFallback> */}
               </Avatar>
             )}
           </div>
         ))}
+        
+        {isLoading && (
+          <div className="flex justify-start">
+            <div className="flex max-w-[80%] items-start gap-3 rounded-lg px-4 py-2 bg-muted">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="/aiagent.png" alt="AI" />
+                <AvatarFallback>AI</AvatarFallback>
+              </Avatar>
+              <div className="flex items-center space-x-1">
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce" />
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce delay-150" />
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce delay-300" />
+              </div>
+            </div>
+          </div>
+        )}
+        
+        <div ref={messagesEndRef} />
       </CardContent>
       <CardFooter className="pt-0">
         <form
@@ -98,12 +108,13 @@ export function AIAssistant() {
           className="flex w-full items-center space-x-2"
         >
           <Input
-            placeholder="Ask me anything about DeFi..."
+            placeholder="Ask me about Swell Network, liquid staking, or DeFi strategies..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1"
+            disabled={isLoading}
           />
-          <Button type="submit" size="icon">
+          <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
             <Send className="h-4 w-4" />
             <span className="sr-only">Send</span>
           </Button>

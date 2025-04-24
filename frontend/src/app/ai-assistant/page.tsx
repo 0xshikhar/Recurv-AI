@@ -136,7 +136,7 @@ export default function AIAssistantPage() {
                   >
                     {message.sender === "ai" && (
                       <Avatar className="mt-0.5 h-8 w-8">
-                        <AvatarImage src="/ai-assistant.png" alt="AI" />
+                        <AvatarImage src="/aiagent.png" alt="AI" />
                         <AvatarFallback className="bg-blue-600 text-white">AI</AvatarFallback>
                       </Avatar>
                     )}
@@ -151,7 +151,7 @@ export default function AIAssistantPage() {
                 <div className="flex justify-start">
                   <div className="flex max-w-[80%] items-start gap-3 rounded-lg px-4 py-2 bg-muted">
                     <Avatar className="mt-0.5 h-8 w-8">
-                      <AvatarImage src="/ai-assistant.png" alt="AI" />
+                      <AvatarImage src="/aiagent.png" alt="AI" />
                       <AvatarFallback className="bg-blue-600 text-white">AI</AvatarFallback>
                     </Avatar>
                     <div className="flex items-center space-x-1">
