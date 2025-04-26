@@ -75,8 +75,8 @@ export default function VaultsPage() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-6">
-                <div>
+            <div className="space-y-6 max-w-5xl mx-auto pt-10">
+            <div>
                     <h1 className="text-3xl font-bold tracking-tight">Yield Vaults</h1>
                     <p className="text-muted-foreground">
                         Invest in automated vaults to earn passive yield on your assets

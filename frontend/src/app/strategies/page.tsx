@@ -99,7 +99,7 @@ export default function StrategiesPage() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-5xl mx-auto pt-10">
                 <div className="flex justify-between items-center">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">Trading Strategies</h1>

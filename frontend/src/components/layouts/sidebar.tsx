@@ -11,9 +11,10 @@ import {
     Vault,
     Settings,
     HelpCircle,
-    MessageCircle
+    MessageCircle,
+    Home
 } from "lucide-react"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { ConnectButtonCustom } from "@/components/ConnectButtonCustom"
 
 interface SidebarProps {
     className?: string
@@ -24,9 +25,9 @@ export function Sidebar({ className }: SidebarProps) {
 
     const navItems = [
         {
-            title: "Dashboard",
+            title: "Home",
             href: "/",
-            icon: LayoutDashboard,
+            icon: Home,
         },
         {
             title: "Lend & Borrow",
@@ -49,9 +50,9 @@ export function Sidebar({ className }: SidebarProps) {
             icon: Vault,
         },
         {
-            title: "AI Assistant",
-            href: "/ai-assistant",
-            icon: MessageCircle,
+            title: "Dashboard",
+            href: "/dashboard",
+            icon: LayoutDashboard,
         },
         {
             title: "Settings",
@@ -66,8 +67,11 @@ export function Sidebar({ className }: SidebarProps) {
     ]
 
     return (
-        <div className={cn("w-64 border-r bg-background p-6", className)}>
-            <div className="flex h-full flex-col justify-between">
+        <div className={cn(
+            "w-64 border-r bg-background p-6 fixed top-0 left-0 h-screen overflow-y-auto", 
+            className
+        )}>
+            <div className="flex flex-col h-full justify-between">
                 <div className="space-y-6">
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
@@ -92,8 +96,8 @@ export function Sidebar({ className }: SidebarProps) {
                     </nav>
                 </div>
 
-                <div className="mt-auto flex justify-center">
-                    <ConnectButton />
+                <div className="mt-auto flex justify-center w-full">
+                    <ConnectButtonCustom />
                 </div>
             </div>
         </div>

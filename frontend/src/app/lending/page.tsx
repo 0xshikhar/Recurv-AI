@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export default function LendingPage() {
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-5xl mx-auto pt-10">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Lend & Borrow</h1>
           <p className="text-muted-foreground">

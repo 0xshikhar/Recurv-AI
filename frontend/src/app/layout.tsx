@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Providers } from "@/app/providers"
-
+import { DashboardLayout } from "@/components/layouts/dashboard-layout"
 const inter = Inter({ subsets: ["latin"] })
 
 interface RootLayoutProps {
@@ -75,13 +75,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
           <Providers>
             <main className="flex-1">
-              {children}
+                {children}
             </main>
           </Providers>
         </ThemeProvider>

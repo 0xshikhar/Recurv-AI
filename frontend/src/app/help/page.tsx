@@ -109,7 +109,7 @@ export default function HelpPage() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-5xl mx-auto pt-10">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Help Center</h1>
                     <p className="text-muted-foreground">
@@ -216,7 +216,7 @@ export default function HelpPage() {
 
                     <TabsContent value="contact">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <Card>
+                            {/* <Card>
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-2">
                                         <MessageCircle className="h-5 w-5" />
@@ -238,7 +238,7 @@ export default function HelpPage() {
                                 <CardFooter>
                                     <Button className="w-full">Start Chat</Button>
                                 </CardFooter>
-                            </Card>
+                            </Card> */}
 
                             <Card>
                                 <CardHeader>
