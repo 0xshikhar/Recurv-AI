@@ -17,7 +17,7 @@ exports.config = {
         url: getEnv('RSK_NODE_URL', 'https://public-node.rsk.co')
     },
     iotaApi: {
-        url: getEnv('IOTA_API_URL', 'https://iota-testnet.blockscout.com'),
+        url: getEnv('IOTA_API_URL', 'https://explorer.rebased.iota.org/api'),
         apiKey: getEnv('IOTA_API_KEY', '')
     },
     jwt: {

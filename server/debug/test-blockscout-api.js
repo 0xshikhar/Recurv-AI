@@ -8,8 +8,7 @@ async function testBlockscoutApi() {
     try {
         console.log('Testing Blockscout API...');
         
-        // Format URL like in your curl example
-        const url = `https://iota-testnet.blockscout.com/api?module=account&action=txlist&address=${WALLET_ADDRESS}&startblock=0&endblock=99999999&apikey=${API_KEY}`;
+        const url = `https://explorer.rebased.iota.org/address/${WALLET_ADDRESS}`;
         
         console.log(`Sending request to: ${url}`);
         const response = await axios.get(url, { timeout: 10000 });

@@ -16,7 +16,7 @@ export const config = {
     },
 
     iotaApi: {
-        url: getEnv('IOTA_API_URL', 'https://iota-testnet.blockscout.com'),
+        url: getEnv('IOTA_API_URL', 'https://explorer.rebased.iota.org/'),
         apiKey: getEnv('IOTA_API_KEY', '')
     },
 
