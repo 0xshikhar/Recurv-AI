@@ -37,7 +37,7 @@ export function AIAssistant() {
     <Card className="h-[500px] flex flex-col">
       <CardHeader className="pb-2">
         <CardTitle>AI Assistant</CardTitle>
-        <CardDescription>Get help with your DeFi activities on Swell Network</CardDescription>
+        <CardDescription>Get help with your DeFi activities on Iota blockchain</CardDescription>
         
         {messages.length === 1 && (
           <SuggestedQuestions onSelect={handleQuestionSelect} disabled={isLoading} />
@@ -108,7 +108,7 @@ export function AIAssistant() {
           className="flex w-full items-center space-x-2"
         >
           <Input
-            placeholder="Ask me about Swell Network, liquid staking, or DeFi strategies..."
+            placeholder="Ask me about Iota blockchain, liquid staking, or DeFi strategies..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1"

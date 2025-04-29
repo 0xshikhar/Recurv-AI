@@ -1,61 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import '@rainbow-me/rainbowkit/styles.css';
-
-import {
-    getDefaultConfig,
-    RainbowKitProvider,
-    connectorsForWallets,
-    getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
-import {
-    argentWallet,
-    trustWallet,
-    ledgerWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { WagmiProvider } from 'wagmi';
+import "@iota/dapp-kit/dist/index.css";
+import { IotaClientProvider, WalletProvider } from "@iota/dapp-kit";
 import {
     QueryClientProvider,
     QueryClient,
 } from "@tanstack/react-query";
 import 'dotenv/config'
-
-import {
-    swellchainTestnet,
-    swellchain
-} from 'wagmi/chains';
+import { networkConfig } from "@/lib/networkConfig";
 
 // const projectId = process.env.WALLET_CONNECT_PROJECT_ID || '';
 const projectId = '9811958bd307518b364ff7178034c435';
-
-
-const config = getDefaultConfig({
-    appName: 'My RainbowKit App',
-    projectId: projectId,
-    chains: [swellchainTestnet, swellchain],
-    ssr: true, // If your dApp uses server side rendering (SSR)
-});
-
-// const connectors = connectorsForWallets([
-//     ...wallets,
-//     {
-//         groupName: 'Other',
-//         wallets: [
-//             argentWallet({ projectId, chains }),
-//             trustWallet({ projectId, chains }),
-//             ledgerWallet({ projectId, chains }),
-//         ],
-//     },
-// ]);
-const { wallets } = getDefaultWallets({
-    appName: 'RainbowKit demo',
-    projectId,
-});
-
-const demoAppInfo = {
-    appName: 'My Wallet Demo',
-};
 
 const queryClient = new QueryClient();
 
@@ -64,14 +20,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = React.useState(false);
     React.useEffect(() => setMounted(true), []);
     return (
-        <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-
-                <RainbowKitProvider appInfo={demoAppInfo}>
+        <QueryClientProvider client={queryClient}>
+            <IotaClientProvider networks={networkConfig} defaultNetwork="testnet">
+                <WalletProvider autoConnect>
                     {children}
-                </RainbowKitProvider>
-
-            </QueryClientProvider>
-        </WagmiProvider>
+                </WalletProvider>
+            </IotaClientProvider>
+        </QueryClientProvider>
     );
 }

@@ -18,7 +18,7 @@ export function useAiChat() {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: 1,
-            content: "Hello! I'm your ReCurv AI assistant. How can I help you with your DeFi activities on Swell Network today?",
+            content: "Hello! I'm your ReCurv AI assistant. How can I help you with your DeFi activities on Iota blockchain today?",
             sender: "ai",
             timestamp: new Date(),
         },

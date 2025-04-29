@@ -25,10 +25,10 @@ export function SuggestedQuestion({ question, onSelect, disabled }: SuggestedQue
 
 export function SuggestedQuestions({ onSelect, disabled }: { onSelect: (question: string) => void, disabled?: boolean }) {
     const defiQuestions = [
-        "What is Swell Network?",
+        "What is Iota blockchain?",
         "How does liquid staking work?",
         "What's the difference between swETH and ETH?",
-        "What are the benefits of using Swell Network?",
+        "What are the benefits of using Iota blockchain?",
         "How can I earn yield with my swETH on ReCurv?",
         "What's the difference between fixed and variable rate loans?"
     ]

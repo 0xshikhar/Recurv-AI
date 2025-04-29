@@ -1,0 +1,10 @@
+[package]
+name = "loan_lender"
+version = "0.0.1"
+edition = "2024.beta"
+
+[dependencies]
+Iota = { local = "/Users/shikharsingh/Downloads/code/iota/crates/iota-framework" }
+
+[addresses]
+loan_lender = "0x0"

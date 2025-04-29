@@ -1,7 +1,7 @@
 {
-    "name": "rootstock-reputation-ai",
+    "name": "iota-reputation-ai",
     "version": "1.0.0",
-    "description": "AI components for Rootstock reputation scoring system",
+    "description": "AI components for IOTA reputation scoring system",
     "main": "index.js",
     "type": "module",
     "scripts": {

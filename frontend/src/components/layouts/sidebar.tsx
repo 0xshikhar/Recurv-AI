@@ -14,7 +14,8 @@ import {
     MessageCircle,
     Home
 } from "lucide-react"
-import { ConnectButtonCustom } from "@/components/ConnectButtonCustom"
+import { ConnectButton } from "@iota/dapp-kit";
+import { WalletStatus } from "@/components/Wallet/WalletStatus";
 
 interface SidebarProps {
     className?: string
@@ -97,7 +98,7 @@ export function Sidebar({ className }: SidebarProps) {
                 </div>
 
                 <div className="mt-auto flex justify-center w-full">
-                    <ConnectButtonCustom />
+                    <ConnectButton />
                 </div>
             </div>
         </div>
