@@ -21,12 +21,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     return (
         <div className="flex min-h-screen bg-background">
             {/* Sidebar for desktop */}
-            <Sidebar className="hidden lg:block" />
+            <Sidebar className="hidden lg:flex" />
 
             {/* Mobile navigation drawer */}
             <MobileNav open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-            <div className="flex-1 flex flex-col lg:ml-64">
+            <div className="flex-1 flex flex-col">
                 {/* Top navigation bar */}
                 <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6">
                     <Button

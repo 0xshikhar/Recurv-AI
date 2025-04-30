@@ -66,8 +66,8 @@ export function Sidebar({ className }: SidebarProps) {
     ]
 
     return (
-        <div className={cn("fixed w-64 h-screen border-r bg-background p-6 overflow-hidden flex flex-col", className)}>
-            <div className="flex flex-col h-full justify-between overflow-y-auto">
+        <div className={cn("w-64 border-r bg-background p-6", className)}>
+            <div className="flex h-full flex-col justify-between">
                 <div className="space-y-6">
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
@@ -75,7 +75,7 @@ export function Sidebar({ className }: SidebarProps) {
                         </span>
                     </Link>
 
-                    <nav className="flex flex-col space-y-1 overflow-y-auto">
+                    <nav className="flex flex-col space-y-1">
                         {navItems.map((item) => (
                             <Link
                                 key={item.href}
@@ -92,7 +92,7 @@ export function Sidebar({ className }: SidebarProps) {
                     </nav>
                 </div>
 
-                <div className="py-4 w-full flex justify-center">
+                <div className="mt-auto flex justify-center">
                     <ConnectButton />
                 </div>
             </div>
